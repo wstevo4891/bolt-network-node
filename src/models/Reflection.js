@@ -6,6 +6,7 @@ import uuid from 'uuid'
 class Reflection {
   /**
    * class constructor
+   * ==========================================================================
    * @param {object} data
    */
   constructor() {
@@ -13,7 +14,8 @@ class Reflection {
   }
 
   /**
-   * create()
+   * Function: create()
+   * ==========================================================================
    * @returns {object} reflection object
    */
   create(data) {
@@ -31,29 +33,33 @@ class Reflection {
   }
 
   /**
-   * findOne()
+   * Function: find()
+   * ==========================================================================
    * @param {uuid} id
    * @returns {object} reflection object
    */
-  findOne(id) {
+  find(id) {
     return this.reflections.find(reflect => reflect.id === id);
   }
 
   /**
-   * findAll()
+   * Function: all()
+   * ==========================================================================
    * @returns {object} returns all reflection
    */
-  findAll() {
+  all() {
     return this.reflections
   }
 
   /**
-   * update()
+   * Function: update()
+   * ==========================================================================
    * @param {uuid} id
    * @param {object} data
+   * @returns {object} updated reflection
    */
   update(id, data) {
-    const reflection = this.findOne(id)
+    const reflection = this.find(id)
     const index = this.reflection.indexOf(reflection)
     const record = this.reflections[index]
 
@@ -69,14 +75,18 @@ class Reflection {
   }
 
   /**
-   * delete()
+   * Function: delete()
+   * ==========================================================================
    * @param {uuid} id
+   * @returns {object} deletion message
    */
   delete() {
-    const reflection = this.findOne(id)
+    const reflection = this.find(id)
     const index = this.reflections.indexOf(reflection)
+
     this.reflections.splice(index, 1)
-    return {}
+
+    return { 'message': 'Reflection was successfully deleted' }
   }
 }
 
