@@ -22,7 +22,7 @@ COPY . /app
 EXPOSE 8080
 
 # Development
-CMD ["npm", "start-dev"]
+CMD ["npm", "run", "start-dev"]
 
 # Production
 # CMD ["npm", "start"]
