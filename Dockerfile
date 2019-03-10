@@ -1,6 +1,7 @@
 # Dockerfile
 
-FROM node:8
+# Node Image
+FROM node:8.10.0-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
