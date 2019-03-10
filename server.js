@@ -31,6 +31,14 @@ const config = {
 // pg.connect('postgres://postgres:password@localhost:5432/practice-docker');
 const pool = new pg.Pool(config);
 
+// const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/todo';
+
+// const client = new pg.Client(connectionString);
+// client.connect();
+// const query = client.query(
+//   'CREATE TABLE items(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, complete BOOLEAN)');
+// query.on('end', () => { client.end(); });
+
 // App Routes
 // ============================================================================
 app.get('/', (req, res) => {
@@ -42,7 +50,10 @@ app.get('/doodle', (req, res) => {
 });
 
 app.get('/movies', (req, res) => {
-  const movies = [{ title: 'Foo', rating: 'PG' }, { title: 'Bar', rating: 'R' }];
+  const movies = [
+    { title: 'Foo', rating: 'PG' },
+    { title: 'Bar', rating: 'R' }
+  ];
 
   res.status(200).send(movies);
 })
