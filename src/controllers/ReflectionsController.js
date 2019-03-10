@@ -4,24 +4,6 @@ import Reflection from '../models/Reflection'
 
 const ReflectionsController = {
   /**
-   * Function: create()
-   * ==========================================================================
-   * @param {object} req
-   * @param {object} res
-   * @returns {object} reflection object
-   */
-  create(req, res) {
-    // Incomplete fields guard clause
-    if (!req.body.success && !req.body.lowPoint && !req.body.takeAway) {
-      return res.status(400).send({ 'message': 'All fields are required' })
-    }
-
-    const reflection = Reflection.create(req.body)
-
-    return res.status(201).send(reflection)
-  },
-
-  /**
    * Function: index()
    * ==========================================================================
    * @param {object} req
@@ -50,6 +32,24 @@ const ReflectionsController = {
     }
 
     return res.status(200).send(reflection)
+  },
+
+  /**
+   * Function: create()
+   * ==========================================================================
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} reflection object
+   */
+  create(req, res) {
+    // Incomplete fields guard clause
+    if (!req.body.success && !req.body.lowPoint && !req.body.takeAway) {
+      return res.status(400).send({ 'message': 'All fields are required' })
+    }
+
+    const reflection = Reflection.create(req.body)
+
+    return res.status(201).send(reflection)
   },
 
   /**

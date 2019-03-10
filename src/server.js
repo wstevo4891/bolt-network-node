@@ -43,12 +43,29 @@ const pool = new pg.Pool(config)
 //   'CREATE TABLE items(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, complete BOOLEAN)');
 // query.on('end', () => { client.end(); });
 
-// API Routes
 // ============================================================================
-// Create Reflection
-app.post('/api/v1/reflection', Reflec)
+// API ROUTES
+// ============================================================================
+// 
+// Reflections
+// ============================================================================
+// GET: Index of Reflections
+app.get('/api/v1/reflections', ReflectionsCtrl.index)
 
-// App Routes
+// GET: Show Reflection
+app.get('/api/v1/reflections/:id', ReflectionsCtrl.show)
+
+// POST: Create Reflection
+app.post('/api/v1/reflections', ReflectionsCtrl.create)
+
+// PUT: Update Reflection
+app.put('/api/v1/reflections/:id', ReflectionsCtrl.update)
+
+// DELETE: Delete Reflection
+app.delete('/api/v1/reflections/:id', ReflectionsCtrl.delete)
+
+// ============================================================================
+// APP ROUTES
 // ============================================================================
 app.get('/', (req, res) => {
   res.status(200).send('Hello World\n')
