@@ -1,15 +1,16 @@
 # docker-compose.yml
 
-version: '2'
+version: '3'
 
 services:
   web:
-    image: wstevo4891/bolt-network-node
-    ports:
-      - 80:8080
-    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm start'
+    # image: wstevo4891/bolt-network-node
+    build: .
     depends_on:
       - db
+    ports:
+      - 8080:8080
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm start'
 
   db:
-    image: postgres
+    image: postgres:11.1-alpine
