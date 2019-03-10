@@ -80,7 +80,7 @@ class Reflection {
    * @param {uuid} id
    * @returns {object} deletion message
    */
-  delete() {
+  delete(id) {
     const reflection = this.find(id)
     const index = this.reflections.indexOf(reflection)
 
