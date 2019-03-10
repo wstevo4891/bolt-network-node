@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "Node.js on Docker",
   "author": "Eric Stephenson <ericb.stephenson@gmail.com>",
+  "license": "ISC",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.16.1"
+    "express": "^4.16.1",
+    "pg": "^7.8.2"
   }
 }
