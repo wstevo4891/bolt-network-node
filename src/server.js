@@ -1,21 +1,23 @@
 // server.js
 
-'use strict';
+// Imports
+// ============================================================================
+import express from 'express'
+import pg from 'pg'
+import http from 'http'
 
 // Constants
 // ============================================================================
-const PORT = process.env.PORT || 8080;
-const DB_PORT = process.env.DB_PORT || 5432;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 8080
+const DB_PORT = process.env.DB_PORT || 5432
+const HOST = '0.0.0.0'
 
 // Setup
 // ============================================================================
-const pg = require('pg');
-const express = require('express');
-const http = require('http');
+const app = express()
+app.use(express.json())
 
-const app = express();
-const server = http.createServer(app);
+const server = http.createServer(app)
 
 // Database Config
 // ============================================================================
@@ -24,12 +26,12 @@ const config = {
   database: 'bolt-network-node_postgres',
   password: process.env.POSTGRES_PASSWORD,
   port: DB_PORT
-};
+}
 
 // Database Init
 // ============================================================================
 // pg.connect('postgres://postgres:password@localhost:5432/practice-docker');
-const pool = new pg.Pool(config);
+const pool = new pg.Pool(config)
 
 // const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/todo';
 
@@ -42,27 +44,27 @@ const pool = new pg.Pool(config);
 // App Routes
 // ============================================================================
 app.get('/', (req, res) => {
-  res.status(200).send('Hello World\n');
-});
+  res.status(200).send('Hello World\n')
+})
 
 app.get('/doodle', (req, res) => {
-  res.status(200).send('Doodlemeister!');
-});
+  res.status(200).send('Doodlemeister!')
+})
 
 app.get('/movies', (req, res) => {
   const movies = [
     { title: 'Foo', rating: 'PG' },
     { title: 'Bar', rating: 'R' }
-  ];
+  ]
 
-  res.status(200).send(movies);
+  res.status(200).send(movies)
 })
 
 app.get('/genres', (req, res) => {
-  const genres = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sci-Fi'];
+  const genres = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sci-Fi']
 
-  res.status(200).send(genres);
-});
+  res.status(200).send(genres)
+})
 
 // Example database connected route
 // ============================================================================
@@ -84,8 +86,8 @@ app.get('/genres', (req, res) => {
 
 // App Listen
 // ============================================================================
-server.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+server.listen(PORT, HOST)
+console.log(`Running on http://${HOST}:${PORT}`)
 
 // Socket IO
 // ============================================================================
@@ -93,9 +95,9 @@ console.log(`Running on http://${HOST}:${PORT}`);
 // We are only using socket.io here to respond to the npmStop signal
 // To support IPC (Inter Process Communication) AKA RPC (Remote P.C.)
 
-const io = require('socket.io')(server);
+const io = require('socket.io')(server)
 io.on('connection', (socketServer) => {
   socketServer.on('npmStop', () => {
-    process.exit(0);
-  });
-});
+    process.exit(0)
+  })
+})
