@@ -10,7 +10,9 @@ services:
       - db
     ports:
       - 8080:8080
-    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm start'
+    # command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; npm start'
 
   db:
     image: postgres:11.1-alpine
+    ports:
+      - 8081:5432
