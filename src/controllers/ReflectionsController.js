@@ -42,6 +42,9 @@ const ReflectionsController = {
    * @returns {object} reflection object
    */
   create(req, res) {
+    console.log('Request body')
+    console.log(req.body)
+
     // Incomplete fields guard clause
     if (!req.body.success && !req.body.lowPoint && !req.body.takeAway) {
       return res.status(400).send({ 'message': 'All fields are required' })

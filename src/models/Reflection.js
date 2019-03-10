@@ -60,7 +60,7 @@ class Reflection {
    */
   update(id, data) {
     const reflection = this.find(id)
-    const index = this.reflection.indexOf(reflection)
+    const index = this.reflections.indexOf(reflection)
     const record = this.reflections[index]
 
     record.success = data['success'] || reflection.success
