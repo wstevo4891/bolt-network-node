@@ -2,7 +2,7 @@
 
 import Reflection from '../models/Reflection'
 
-const ReflectionController = {
+const ReflectionsController = {
   /**
    * Function: create()
    * ==========================================================================
@@ -92,3 +92,5 @@ const ReflectionController = {
     return res.status(204).send(ref)
   }
 }
+
+export default ReflectionsController

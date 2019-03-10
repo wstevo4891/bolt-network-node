@@ -6,6 +6,8 @@ import express from 'express'
 import pg from 'pg'
 import http from 'http'
 
+import ReflectionsCtrl from './controllers/ReflectionsController'
+
 // Constants
 // ============================================================================
 const PORT = process.env.PORT || 8080
@@ -40,6 +42,11 @@ const pool = new pg.Pool(config)
 // const query = client.query(
 //   'CREATE TABLE items(id SERIAL PRIMARY KEY, text VARCHAR(40) not null, complete BOOLEAN)');
 // query.on('end', () => { client.end(); });
+
+// API Routes
+// ============================================================================
+// Create Reflection
+app.post('/api/v1/reflection', Reflec)
 
 // App Routes
 // ============================================================================
