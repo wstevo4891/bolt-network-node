@@ -4,15 +4,18 @@
 
 // Constants
 // ============================================================================
-const PORT = process.env.PORT;
-const DB_PORT = process.env.DB_PORT;
+const PORT = process.env.PORT || 8080;
+const DB_PORT = process.env.DB_PORT || 5432;
 const HOST = '0.0.0.0';
 
 // Setup
 // ============================================================================
 const pg = require('pg');
 const express = require('express');
+const http = require('http');
+
 const app = express();
+const server = http.createServer(app);
 
 // Database Config
 // ============================================================================
@@ -34,6 +37,16 @@ app.get('/', (req, res) => {
   res.status(200).send('Hello World\n');
 });
 
+app.get('/doodle', (req, res) => {
+  res.status(200).send('Doodlemeister!');
+});
+
+app.get('/movies', (req, res) => {
+  const movies = [{ title: 'Foo', rating: 'PG' }, { title: 'Bar', rating: 'R' }];
+
+  res.status(200).send(movies);
+})
+
 // Example database connected route
 // ============================================================================
 // app.get('/', (req, res, next) => {
@@ -54,7 +67,7 @@ app.get('/', (req, res) => {
 
 // App Listen
 // ============================================================================
-app.listen(PORT, HOST);
+server.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 
 // Socket IO
@@ -63,7 +76,7 @@ console.log(`Running on http://${HOST}:${PORT}`);
 // We are only using socket.io here to respond to the npmStop signal
 // To support IPC (Inter Process Communication) AKA RPC (Remote P.C.)
 
-const io = require('socket.io')(app);
+const io = require('socket.io')(server);
 io.on('connection', (socketServer) => {
   socketServer.on('npmStop', () => {
     process.exit(0);
