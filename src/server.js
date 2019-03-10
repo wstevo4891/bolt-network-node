@@ -58,6 +58,12 @@ app.get('/movies', (req, res) => {
   res.status(200).send(movies);
 })
 
+app.get('/genres', (req, res) => {
+  const genres = ['Action', 'Adventure', 'Comedy', 'Drama', 'Sci-Fi'];
+
+  res.status(200).send(genres);
+});
+
 // Example database connected route
 // ============================================================================
 // app.get('/', (req, res, next) => {

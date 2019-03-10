@@ -8,8 +8,8 @@
   "scripts": {
     "start": "node src/server.js",
     "stop": "node src/server.stop.js",
-    "start code": "node --inspect server.js",
-    "start dev": "nodemon --exec babel-node src/server.js",
+    "start-code": "node --inspect server.js",
+    "start-dev": "nodemon --exec babel-node src/server.js",
     "build": "babel src --out-dir dist",
     "serve": "node dist/server.js"
   },
