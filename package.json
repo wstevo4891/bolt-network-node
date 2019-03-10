@@ -6,8 +6,8 @@
   "license": "ISC",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "stop": "node server.stop.js",
+    "start": "node src/server.js",
+    "stop": "node src/server.stop.js",
     "startCode": "node --inspect server.js"
   },
   "dependencies": {
