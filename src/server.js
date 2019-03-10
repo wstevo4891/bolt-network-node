@@ -6,7 +6,7 @@ import express from 'express'
 import pg from 'pg'
 import http from 'http'
 
-import ReflectionsCtrl from './controllers/ReflectionsController'
+import ReflectionsCtrl from './staticDB/controllers/ReflectionsController'
 
 // Constants
 // ============================================================================
@@ -25,7 +25,7 @@ const server = http.createServer(app)
 // ============================================================================
 const config = {
   user: 'postgres',
-  database: 'bolt-network-node_postgres',
+  database: 'bolt-network-node_db_1',
   password: process.env.POSTGRES_PASSWORD,
   port: DB_PORT
 }
