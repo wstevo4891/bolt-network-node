@@ -5,6 +5,7 @@
 // Constants
 // ============================================================================
 const PORT = process.env.PORT;
+const DB_PORT = process.env.DB_PORT;
 const HOST = '0.0.0.0';
 
 // Setup
@@ -19,7 +20,7 @@ const config = {
   user: 'postgres',
   database: 'bolt-network-node_postgres',
   password: process.env.POSTGRES_PASSWORD,
-  port: PORT
+  port: DB_PORT
 };
 
 // Database Init

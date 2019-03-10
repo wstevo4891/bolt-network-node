@@ -4,6 +4,7 @@ version: '3'
 
 services:
   web:
+    # Use docker image when complete
     # image: wstevo4891/bolt-network-node
     build: .
     depends_on:
