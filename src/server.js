@@ -5,12 +5,13 @@
 import express from 'express'
 import pg from 'pg'
 import http from 'http'
+import '@babel/polyfill'
 import dotenv from 'dotenv'
 
 dotenv.config()
 // console.log(process.env.DATABASE_URL)
 
-import ReflectionsCtrl from './staticDB/controllers/ReflectionsController'
+import ReflectionsCtrl from './postgresDB/controllers/ReflectionsController'
 
 // Constants
 // ============================================================================
