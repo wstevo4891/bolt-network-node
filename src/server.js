@@ -4,6 +4,7 @@
 // ============================================================================
 import express from 'express'
 import pg from 'pg'
+import Sequelize from 'sequelize'
 import http from 'http'
 import '@babel/polyfill'
 import dotenv from 'dotenv'
@@ -17,6 +18,7 @@ dotenv.config()
 // ============================================================================
 const PORT = process.env.PORT
 const DB_PORT = process.env.DB_PORT
+const DB_URL = process.env.DATABASE_URL
 const HOST = '0.0.0.0'
 
 // Setup
@@ -26,8 +28,11 @@ app.use(express.json())
 
 const server = http.createServer(app)
 
-// Database Config
+// Database Setup
 // ============================================================================
+
+// Config
+// ========================================================
 const config = {
   user: 'postgres',
   database: 'bolt-network-node_db_1',
@@ -36,9 +41,18 @@ const config = {
 }
 
 // Database Init
-// ============================================================================
+// ========================================================
 // pg.connect('postgres://postgres:password@localhost:5432/practice-docker');
 const pool = new pg.Pool(config)
+const sequelize = new Sequelize(DB_URL)
+
+sequelize.authenticate()
+  .then(() => {
+    console.log('Sequelize connection established')
+  })
+  .catch((error) => {
+    console.error('Unable to connect to database', error)
+  })
 
 // const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/todo';
 
