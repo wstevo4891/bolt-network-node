@@ -41,7 +41,7 @@ const ReflectionsController = {
       returning *`;
 
     const values = [
-      uuid.v4(),
+      uuidv4(),
       req.body.success,
       req.body.low_point,
       req.body.take_away,
@@ -51,6 +51,8 @@ const ReflectionsController = {
 
     try {
       const { rows } = await db.query(text, values);
+      console.log('SQL Reflections create')
+      console.log(rows[0])
       return res.status(201).send(rows[0]);
 
     } catch(error) {

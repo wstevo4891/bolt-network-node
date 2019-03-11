@@ -8,10 +8,10 @@ import http from 'http'
 import '@babel/polyfill'
 import dotenv from 'dotenv'
 
+import ReflectionsCtrl from './postgresDB/controllers/ReflectionsController'
+
 dotenv.config()
 // console.log(process.env.DATABASE_URL)
-
-import ReflectionsCtrl from './postgresDB/controllers/ReflectionsController'
 
 // Constants
 // ============================================================================
