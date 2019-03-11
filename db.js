@@ -1,5 +1,11 @@
 // db.js
 
+// RUN createTables():
+// docker-compose run web node db createTables
+
+// RUN dropTables()
+// docker-compose run web node db dropTables
+
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 

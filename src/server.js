@@ -5,13 +5,17 @@
 import express from 'express'
 import pg from 'pg'
 import http from 'http'
+import dotenv from 'dotenv'
+
+dotenv.config()
+// console.log(process.env.DATABASE_URL)
 
 import ReflectionsCtrl from './staticDB/controllers/ReflectionsController'
 
 // Constants
 // ============================================================================
-const PORT = process.env.PORT || 8080
-const DB_PORT = process.env.DB_PORT || 5432
+const PORT = process.env.PORT
+const DB_PORT = process.env.DB_PORT
 const HOST = '0.0.0.0'
 
 // Setup
@@ -26,7 +30,7 @@ const server = http.createServer(app)
 const config = {
   user: 'postgres',
   database: 'bolt-network-node_db_1',
-  password: process.env.POSTGRES_PASSWORD,
+  password: process.env.DB_PASSWORD,
   port: DB_PORT
 }
 
