@@ -16,6 +16,8 @@ const Genre = sequelize.define('genre', {
   timestamps: true
 })
 
+export default Genre
+
 Genre.sync({ force: true })
   .then(() => {
     // Table Created
